@@ -124,11 +124,12 @@ view: gauge_data {
 
   dimension: pct_change_num {
     type: number
-    sql: SELECT 7.478 ;;
+    sql: 7.478 ;;
   }
 
   dimension: pct_change_string {
-    type: number
-    sql: SELECT '7478%' ;;
+    type: string
+    sql: '7478%' ;;
   }
+
 }
