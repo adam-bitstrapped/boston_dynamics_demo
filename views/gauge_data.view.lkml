@@ -13,14 +13,14 @@ view: gauge_data {
 
   dimension: base64img {
     type: string
-    sql: ${TABLE}.base64img ;;
+    sql: REPLACE(LEFT(${TABLE}.base64img, LENGTH(${TABLE}.base64img)-1),"b'","")  ;;
   }
 
-  dimension: base64html {
-    type: string
-    sql: ${base64img} ;;
-    html: <img src="data:image/gif;base64,{{value}}" height=200 width=200 /> ;;
-  }
+  # dimension: base64html {
+  #   type: string
+  #   sql: ${base64img} ;;
+  #   html: <img src="data:image/gif;base64,{{value}}" height=200 width=200 /> ;;
+  # }
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
