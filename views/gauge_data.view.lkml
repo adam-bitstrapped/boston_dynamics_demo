@@ -122,14 +122,14 @@ view: gauge_data {
     drill_fields: [filename]
   }
 
-  dimension: pct_change_num {
+  dimension: pct_change_dim {
     type: number
     sql: 7.478 ;;
   }
 
-  dimension: pct_change_string {
-    type: string
-    sql: '7478%' ;;
+  measure: pct_change_meas {
+    type: average
+    sql: ${pct_change_dim} ;;
   }
 
 }
