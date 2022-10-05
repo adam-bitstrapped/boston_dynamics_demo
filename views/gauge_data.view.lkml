@@ -45,6 +45,34 @@ view: gauge_data {
     sql: ${TABLE}.filename ;;
   }
 
+  dimension: waypoint {
+    case: {
+      when: {
+        sql: ${TABLE}.label = 'gauge1' ;;
+        label: "North Wall"
+      }
+      when: {
+        sql: ${TABLE}.label = 'gauge2'  ;;
+        label: "Assembly Line (back)"
+      }
+      when: {
+        sql: ${TABLE}.label = 'gauge3'  ;;
+        label: "Main Room"
+      }
+      when: {
+        sql: ${TABLE}.label = 'gauge4' ;;
+        label: "Assembly Line (front)"
+      }
+      when: {
+        sql: ${TABLE}.label = 'gauge5'  ;;
+        label: "Central Conveyor"
+      }
+      # Possibly more when statements
+      else: "South Wall"
+    }
+    alpha_sort: yes
+  }
+
   dimension: gcs_url {
     type: string
     sql: ${TABLE}.gcs_url ;;
@@ -92,5 +120,15 @@ view: gauge_data {
   measure: count {
     type: count
     drill_fields: [filename]
+  }
+
+  dimension: pct_change_num {
+    type: number
+    sql: 7.478 ;;
+  }
+
+  dimension: pct_change_string {
+    type: number
+    sql: '7478%' ;;
   }
 }
